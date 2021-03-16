@@ -1,0 +1,51 @@
+// C++ code of BFS of a graph 
+#include<bits/stdc++.h>
+using namespace std;
+ void  bfs(int s,vector<int> g[],bool vis[],int n)
+    {
+        queue<int> q;
+        q.push(s);
+        vis[s]=true;
+        int i;
+        while(!q.empty()){
+              int cur=q.front();
+            q.pop();
+            cout<<cur;
+        for(i=0;i<n;i++)
+        {
+            if(vis[g[cur][i]]=false)
+            vis[g[cur][i]]=true;
+            q.push(g[cur][i]);
+        }
+        }
+    }
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int i;
+        int n,e;
+        cout<<"enter number of vertices and edges";
+        cin>>n>>e;
+        // making vector of arrays representing in form of adjacenecy list
+        vector<int> g[n];
+        bool vis[n]={false};
+        // setting visited array to false
+        memset(vis,false,sizeof(vis));
+        // making adjacenecy list
+        for(i=0;i<e;i++)
+        {
+            int u,v;
+            cin>>u>>v;
+            g[u].push_back(v);
+            
+        }
+        bfs(0,g,vis,n);
+        cout<<endl;
+        return 0;
+    }
+}
+  
+    
