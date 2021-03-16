@@ -1,0 +1,44 @@
+// C++ code of DFS of a graph 
+#include<bits/stdc++.h>
+using namespace std;
+ void  dfs(int s,vector<int> g[],bool *vis)
+    {
+        vis[s]==true;
+        cout<<s;
+        int i;
+        for(i=0;i<g[s].size();i++)
+        {
+            if(vis[i]==false)
+            dfs(g[s][i],g,vis);
+        }
+    }
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int i;
+        int n,e;
+        cout<<"enter number of vertices and edges";
+        cin>>n>>e;
+        // making vector of arrays representing in form of adjacenecy list
+        vector<int> g[n];
+        bool vis[n];
+        // setting visited array to false
+        memset(vis,false,sizeof(vis));
+        // making adjacenecy list
+        for(i=0;i<e;i++)
+        {
+            int u,v;
+            cin>>u>>v;
+            g[u].push_back(v);
+           
+        }
+        dfs(0,g,vis);
+        cout<<endl;
+        return 0;
+    }
+}
+  
+    
